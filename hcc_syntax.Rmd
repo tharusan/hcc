@@ -1,0 +1,53 @@
+---
+title: "hcc_syntax"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(summarytools)
+library(tidyverse)
+library(DescTools)
+library(knitr)
+library(kableExtra)
+library(tableone)
+library(pander)
+library(sjPlot)
+library(broom)
+library(rms)
+library(Hmisc)
+library(sjPlot)
+library(sjmisc)
+library(sjlabelled)
+library("DiagrammeR")
+library(naniar)
+library(ivprobit)
+library(ggpubr)
+panderOptions('table.split.table', Inf)
+```
+
+#import Pubmed data
+```{r}
+pubmed_csv1 <- read.csv("E:/backup9/projects/liver_adenoma_ca/data/pubmed_csv1.csv")
+  View(pubmed_csv1)
+  
+pm <- pubmed_csv1 %>% select(ï..PMID, Title, Authors, Citation, Publication.Year)
+
+pm<- rename(pm, pmid = `ï..PMID`)
+pm<- rename(pm, title = `Title`)
+pm<- rename(pm, authors = `authors`)
+pm<- rename(pm, authors = `Authors`)
+pm<- rename(pm, journal = `Citation`)
+pm<- rename(pm, year = `Publication.Year`)
+```
+
+#export to Excel
+```{r}
+library("writexl")
+write_xlsx(pm,"pubmed_review1.xlsx")
+```
+
