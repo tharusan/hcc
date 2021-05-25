@@ -45,7 +45,7 @@ pm<- rename(pm, journal = `Citation`)
 pm<- rename(pm, year = `Publication.Year`)
 ```
 
-#export to Excel
+#export to Excell
 ```{r}
 library("writexl")
 write_xlsx(pm,"pubmed_review1.xlsx")
